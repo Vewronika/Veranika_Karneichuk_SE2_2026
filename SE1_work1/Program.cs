@@ -57,20 +57,36 @@ namespace SE1_work1
 
                 StringBuilder str = new StringBuilder();
 
-                foreach (char c in arg)
+                List<StringBuilder> strList = new List<StringBuilder>();
+
+                /*foreach (char c in arg)
                 {
-                    if (IsNum(c)) continue;
+                    if (c == '/') continue;
+                    //if (IsNum(c)) continue;
 
                     str.Append(c);
 
-
-
                     if (IsNum(arg[arg.IndexOf(c) + 1]))
                     {
-
+                        //
                     }
-                }
+                }*/
 
+                int i = 2;
+
+                while (true)
+                {
+
+                    if(arg[i] == '[')
+                    {
+                        i++;
+                        Delimiter(arg, i);
+                    }
+
+
+
+
+                }
 
 
 
@@ -84,7 +100,24 @@ namespace SE1_work1
         {
             return c >= '0' && c <= '9';
         }
+
+
+        StringBuilder Delimiter(string arg, int index)
+        {
+            StringBuilder str = new StringBuilder();
+            for (int i = index; i < arg.Length; i++)
+            {
+
+                    while (arg[i] != ']')
+                    {
+                        str.Append(arg[i]);
+                        i++;
+                    }
+                
+
+            }
+            return str;
+        }
+
     }
-
-
 }
