@@ -75,6 +75,9 @@ namespace TestProject1
         {
             StringCalculator sc = new StringCalculator();
             Assert.ThrowsException<ArgumentException>(() => sc.Calculate("-5,6"));
+
+
+            Assert.ThrowsException<ArgumentException>(() => sc.Calculate("//#\n-5#6"));
         }
 
 
@@ -86,6 +89,9 @@ namespace TestProject1
             StringCalculator sc = new StringCalculator();
             int result = sc.Calculate("5,1001");
             Assert.AreEqual(5, result);
+
+            int r1 = sc.Calculate("//[##]\n5##1001");
+            Assert.AreEqual(5, r1);
         }
 
 
@@ -105,8 +111,8 @@ namespace TestProject1
         public void MultiCharDelimiterDefinedOnFirstLine()
         {
             StringCalculator sc = new StringCalculator();
-            int result = sc.Calculate("//[###]\n###6");
-            Assert.AreEqual(11, result);
+            int result = sc.Calculate("//[###]\n7###6");
+            Assert.AreEqual(13, result);
         }
 
 
